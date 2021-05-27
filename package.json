@@ -1,12 +1,16 @@
 {
   "name": "fireflies.js",
   "description": "HTML canvas animated Fireflies",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/fireflies.min.js",
   "module": "src/fireflies.js",
   "directories": {
     "example": "examples"
   },
+  "files": [
+    "src/",
+    "dist/"
+  ],
   "scripts": {
     "build": "webpack",
     "test": "echo \"No test specified\""

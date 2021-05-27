@@ -1,14 +1,14 @@
 
 ![preview](./examples/preview.gif "Fireflies")
 
-# Fireflies &middot; [![npm version](https://img.shields.io/npm/v/evoke.js.svg?style=flat)](https://www.npmjs.com/package/fireflies) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Eluvade/fireflies/blob/master/LICENSE)
+# Fireflies &middot; [![npm version](https://img.shields.io/npm/v/fireflies.js.svg?style=flat)](hhttps://www.npmjs.com/package/fireflies.js) [![GitHub license](https://img.shields.io/github/license/Eluvade/fireflies)](https://github.com/Eluvade/fireflies/blob/master/LICENSE)
 
 Fireflies are an HTML canvas animation written in JavaScript.
 
 ## Installation
 
-* Use Fireflies as a `<script>` tag from a [CDN](https://unpkg.com/fireflies/dist/fireflies.min.js)
-* Add Fireflies package `npm i fireflies --only=prod` from [npm](https://www.npmjs.com/package/fireflies)
+* Use Fireflies as a `<script>` tag from a [CDN](https://unpkg.com/fireflies.js/dist/fireflies.min.js)
+* Add Fireflies package `npm i fireflies --only=prod` from [npm](https://www.npmjs.com/package/fireflies.js)
 
 ## Usage
 
