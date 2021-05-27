@@ -14,7 +14,7 @@ Fireflies are an HTML canvas animation written in JavaScript.
 
 Import and initialize fireflies with default configuration:
 ```JavaScript
-import Fireflies from 'fireflies'
+import Fireflies from 'fireflies.js'
 Fireflies.initialize()
 ```
 
