@@ -1,7 +1,7 @@
 {
   "name": "fireflies.js",
   "description": "HTML canvas animated Fireflies",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/fireflies.min.js",
   "module": "src/fireflies.js",
   "directories": {
