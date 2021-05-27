@@ -1,5 +1,5 @@
 {
-  "name": "fireflies",
+  "name": "fireflies.js",
   "description": "HTML canvas animated Fireflies",
   "version": "1.0.0",
   "main": "dist/fireflies.min.js",
