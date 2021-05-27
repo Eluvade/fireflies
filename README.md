@@ -1,68 +1,59 @@
-# Evoke &middot; [![npm version](https://img.shields.io/npm/v/evoke.js.svg?style=flat)](https://www.npmjs.com/package/evoke.js) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/evoke-js/evoke.js/LICENSE)
+![preview gif][animation]
+[preview]: ./examples/preview.gif "Fireflies"
 
-Evoke is a lightweight JavaScript module for dynamic creation of html elements. It uses a virtual DOM which makes designing front-end a breeze.
+# Fireflies &middot; [![npm version](https://img.shields.io/npm/v/evoke.js.svg?style=flat)](https://www.npmjs.com/package/fireflies) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Eluvade/fireflies/blob/master/LICENSE)
+
+Fireflies are an HTML canvas animation written in JavaScript.
 
 ## Installation
 
-* Use Evoke as a `<script>` tag from a [CDN](https://unpkg.com/evoke.js/dist/evoke.min.js)
-* Add Evoke package `npm i evoke.js --only=prod` from [npm](https://www.npmjs.com/package/evoke.js)
+* Use Fireflies as a `<script>` tag from a [CDN](https://unpkg.com/fireflies/dist/fireflies.min.js)
+* Add Fireflies package `npm i fireflies --only=prod` from [npm](https://www.npmjs.com/package/fireflies)
 
 ## Usage
 
 ```JavaScript
-import Evoke from 'evoke.js' // import the Evoke module
-const root = Evoke.create('section', 'body', 'mainContext', undefined, 'theme-dark', undefined, {style: 'display: flex;'})
-const myDiv = Evoke.create('div', root, 'newContext', 'myDivID')
-Evoke.create('p', 'myDiv', 'newContext', undefined, ['no-magin', 'p-2', 'col-md-12'], 'Hello  World!')
-const independantDiv = Evoke.create()
-independantDiv.innerHTML = "Extending my website..."
-// Evoke.deleteContext('newContext') // Deletes the "Hello World!"
+import Fireflies from 'fireflies' // import the Fireflies module
+Fireflies.initialize() // initializes the fireflies with default configuration
 ```
 
-The regular DOM syntax can still be used on elements that are created with evoke.
+
+```JavaScript
+Fireflies.initialize(undefined, [5, 50], [{ fill: '#ffffff', glow: '#17a6bb' }], true, true, true, false) // example of an alternative configuration
+```
 
 # List of static methods
 
-* `Evoke.create()` creates a new html element.
-* `Evoke.update()` is work in progress.
-* `Evoke.delete(element)` deletes the element object.
-* `Evoke.createContext()` creates a new context.
-* `Evoke.deleteContext()` deletes the desired context and the elements within it.
-* `Evoke.contexts` is the getter function to view all contexts.
+* `Fireflies.initialize()` Creates a canvas, appends it to the <body> animating the fireflies.
+* `Fireflies.terminate()` Deletes the canvas and stops the animation.
 
-# The create function
+
+# The initialize function
 Please note that the order of parameters is fixed.
 ```JavaScript
 /**
-* The Evoke.create() function
-* @param {string} elementType          - string that specifies the type of html element to be created
-* @param {object or a string} parent   - parent element of the element being created
-* @param {string} context              - internal sorting structure
-* @param {string} id                   - the ID attribute of the html element
-* @param {string or an array} classes  - a singular class or a list of classes of the html element
-* @param {string} text                 - the text content of the html element
-* @param {object} attributes           - an object of which the key is the attribute name with it's assigned value
-* @return {object}                     - returns the html element object
+* The Fireflies.initialize() function
+* @param {integer} quantity            - the number of fireflies to create, dynamically created based on window size by default
+* @param {integer or an array} radius  - use array to specify the minimum and maximum firefly size in px
+* @param {array of objects} color      - each object represents a possible firefly color styling containing the fill and glow property
+* @param {boolean} collision           - should fireflies interact with each other and the mouse?
+* @param {boolean} pulse               - should the glow of fireflies change its intensity over time?
+* @param {boolean} flicker             - should the fireflies flicker periodically?
+* @param {boolean} connect             - should fireflies weave a web of threads in-between them?
 */
-create(elementType = 'div', parent = 'body', context = undefined, id = undefined, classes = undefined, text = undefined, attributes = undefined) {
+  static initialize(quantity = Math.floor((window.innerHeight + window.innerWidth) / 100), radius = [5, 25 + Math.floor((window.innerHeight + window.innerWidth) / 100)], color = [{ fill: '#ffffea', glow: '#ff881b' }], collision = false, pulse = true, flicker = true, connect = false) {
   ...
 }
 ```
-The `undefined` value or omitting parameters will revert to Evoke's default settings / parameters.
+The `undefined` value or omitting parameters will revert to default settings / parameters.
 
-# Understanding Context
-
-Context is the way Evoke sorts the created html elements. Think of it as a connecting tag between a group of elements.  
-A new context will be created by filling the context parameter when creating a new element. If the parameter is omitted, Evoke will deal with this for you.  
-A new context can also be created with the `Evoke.createContext('contextName')` function which takes a string for it's parameter.  
-To delete all elements within a context use `Evoke.deleteContext('contextName')`
 
 # Contributing
 
-Evoke was originally written by [Zaharija](https://github.com/zaharija) and [Bunny Eluvade](https://github.com/Eluvade).  
-Big thanks to all our other [contributors](https://github.com/evoke-js/evoke.js/contributors) who made this possible.  
+Fireflies were originally written by [Bunny Eluvade](https://github.com/Eluvade).  
+Big thanks to all our other [contributors](https://github.com/Eluvade/fireflies/contributors) who made this possible.  
 Keeping it simple and lightweight is the number 1 priority. Don't add any unnecessary libraries.
 
 # License
 
-This project is licensed under the [MIT](https://github.com/evoke-js/evoke.js/LICENSE) License.
+This project is licensed under the [MIT](https://github.com/Eluvade/fireflies/blob/master/LICENSE) License.

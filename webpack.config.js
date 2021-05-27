@@ -3,11 +3,11 @@ const webpack = require('webpack');
 
 module.exports = {
   mode: 'production',
-  entry: './src/evoke.js',
+  entry: './src/fireflies.js',
   output: {
-    filename: 'evoke.min.js',
+    filename: 'fireflies.min.js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'Evoke',
+    library: 'Fireflies',
     libraryExport: "default" ,
     libraryTarget: 'umd'
   },

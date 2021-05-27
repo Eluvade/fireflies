@@ -1,4 +1,41 @@
 {
+  "name": "fireflies",
+  "description": "HTML canvas animated Fireflies",
+  "version": "1.0.0",
+  "main": "dist/fireflies.min.js",
+  "module": "src/fireflies.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eluvade/fireflies.git"
+  },
+  "keywords": [
+    "fireflies",
+    "html",
+    "canvas",
+    "javascript",
+    "html5",
+    "animation",
+    "background",
+    "open-source"
+  ],
+  "author": [
+    {
+      "name": "Bunny Eluvade",
+      "git": "https://github.com/Eluvade"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Eluvade/fireflies/issues"
+  },
+  "homepage": "https://github.com/Eluvade/fireflies#readme",
   "devDependencies": {
     "webpack": "^5.37.1",
     "webpack-cli": "^4.7.0"
