@@ -1,7 +1,7 @@
 
 ![preview](./examples/preview.gif "Fireflies")
 
-# Fireflies &middot; [![npm version](https://img.shields.io/npm/v/fireflies.js.svg?style=flat)](hhttps://www.npmjs.com/package/fireflies.js) [![GitHub license](https://img.shields.io/github/license/Eluvade/fireflies)](https://github.com/Eluvade/fireflies/blob/master/LICENSE)
+# Fireflies &middot; [![npm version](https://img.shields.io/npm/v/fireflies.js.svg?style=flat)](https://www.npmjs.com/package/fireflies.js) [![GitHub license](https://img.shields.io/github/license/Eluvade/fireflies)](https://github.com/Eluvade/fireflies/blob/master/LICENSE)
 
 Fireflies are an HTML canvas animation written in JavaScript.
 
