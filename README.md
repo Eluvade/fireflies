@@ -1,5 +1,5 @@
-![preview gif][animation]
-[preview]: ./examples/preview.gif "Fireflies"
+
+![preview](./examples/preview.gif "Fireflies")
 
 # Fireflies &middot; [![npm version](https://img.shields.io/npm/v/evoke.js.svg?style=flat)](https://www.npmjs.com/package/fireflies) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/Eluvade/fireflies/blob/master/LICENSE)
 
@@ -12,14 +12,15 @@ Fireflies are an HTML canvas animation written in JavaScript.
 
 ## Usage
 
+Import and initialize fireflies with default configuration:
 ```JavaScript
-import Fireflies from 'fireflies' // import the Fireflies module
-Fireflies.initialize() // initializes the fireflies with default configuration
+import Fireflies from 'fireflies'
+Fireflies.initialize()
 ```
 
-
+Example of an alternative configuration:
 ```JavaScript
-Fireflies.initialize(undefined, [5, 50], [{ fill: '#ffffff', glow: '#17a6bb' }], true, true, true, false) // example of an alternative configuration
+Fireflies.initialize(undefined, [5, 50], [{ fill: '#ffffff', glow: '#17a6bb' }], true, true, true, false)
 ```
 
 # List of static methods
