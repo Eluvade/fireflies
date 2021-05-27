@@ -8,7 +8,7 @@ Fireflies are an HTML canvas animation written in JavaScript.
 ## Installation
 
 * Use Fireflies as a `<script>` tag from a [CDN](https://unpkg.com/fireflies.js/dist/fireflies.min.js)
-* Add Fireflies package `npm i fireflies --only=prod` from [npm](https://www.npmjs.com/package/fireflies.js)
+* Add Fireflies package `npm i fireflies.js --only=prod` from [npm](https://www.npmjs.com/package/fireflies.js)
 
 ## Usage
 
