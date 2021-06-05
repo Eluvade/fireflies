@@ -144,7 +144,7 @@
     }
     fly() {
       this.collide()
-      this.field();
+      this.field()
       this.stayWithinView() // Screenbound
       this.x += 0.75 * Math.cos(this.velocity.x) // The number is the speed modifier
       this.y += 0.75 * Math.sin(this.velocity.y) // The number is the speed modifier
@@ -163,7 +163,7 @@
       let distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2)) // Distance between firefly and mouse
       let angle = Math.atan(Math.abs(deltaY) / Math.abs(deltaX)) // Angle of firefly with respect to mouse
 
-      if (distance > 10*maxRadius) return
+      if (distance > 10 * maxRadius) return
 
       let velocity = k / Math.pow(distance/maxRadius, 2) // Velocity is modelled after electric field (inaccurate more conversions needed for true velocity)
       if (velocity > k) velocity = k // Sets limit on field strength, this is in case mouse is within the radius
@@ -175,8 +175,8 @@
       if (Number.isFinite(vy)) this.y += vy
     }
     stayWithinView() {
-      // particle.position.x = Math.max( Math.min( particle.position.x, SCREEN_WIDTH ), 0 );
-      // particle.position.y = Math.max( Math.min( particle.position.y, SCREEN_HEIGHT ), 0 );
+      // particle.position.x = Math.max( Math.min( particle.position.x, SCREEN_WIDTH ), 0 )
+      // particle.position.y = Math.max( Math.min( particle.position.y, SCREEN_HEIGHT ), 0 )
       if (this.x + this.radius >= canvas.width || this.x - this.radius <= 0) {
         this.velocity.x -= 0.07
       } else {
