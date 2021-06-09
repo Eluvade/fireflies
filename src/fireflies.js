@@ -24,6 +24,11 @@ const animationLoop = _ => {
 
   for (let i = 0; i < fireflies.length; i++) {
     fireflies[i].fly()
+
+    if (fireflies[i].x < 0 - fireflies[i].radius || fireflies[i].x > canvas.width + fireflies[i].radius || fireflies[i].y < 0 - fireflies[i].radius || fireflies[i].y > canvas.height + fireflies[i].radius) {
+      fireflies[i].x = rng(fireflies[i].radius, canvas.width - fireflies[i].radius)
+      fireflies[i].y = rng(fireflies[i].radius, canvas.height - fireflies[i].radius)
+    }
   }
 
   mouse.prevX = mouse.x
@@ -52,10 +57,10 @@ export default class Fireflies {
       let r
       if (Object.prototype.toString.call(radius) === '[object Array]') {
         r = rng(radius[0], radius[1])
-        maxRadius = radius[1]
+        maxRadius = 1.5 * radius[1]
       } else {
         r = radius
-        maxRadius = radius
+        maxRadius = 1.5 * radius
       }
       const x = rng(r, canvas.width - r)
       const y = rng(r, canvas.height - r)
@@ -114,35 +119,12 @@ export class Firefly {
   }
   fly() {
     this.collide()
-    this.field()
     this.stayWithinView() // Screenbound
     this.x += 0.75 * Math.cos(this.velocity.x) // The number is the speed modifier
     this.y += 0.75 * Math.sin(this.velocity.y) // The number is the speed modifier
     this.calcGlow()
     // this.leaveTrail()
     this.draw()
-  }
-  field() {
-    if (!mouse.isMoving()) return
-
-    const k = 5 // Max velocity constant
-
-    let deltaX = this.x - mouse.x // Horizontal distance between firefly and mouse
-    let deltaY = this.y - mouse.y // Vertical distance between firefly and mouse
-
-    let distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2)) // Distance between firefly and mouse
-    let angle = Math.atan(Math.abs(deltaY) / Math.abs(deltaX)) // Angle of firefly with respect to mouse
-
-    if (distance > 10 * maxRadius) return
-
-    let velocity = k / Math.pow(distance/maxRadius, 2) // Velocity is modelled after electric field (inaccurate more conversions needed for true velocity)
-    if (velocity > k) velocity = k // Sets limit on field strength, this is in case mouse is within the radius
-
-    let vx = velocity * Math.cos(angle) * (deltaX/Math.abs(deltaX)) // Horizontal component of v is cos of angle times net velocity as well as the direction
-    let vy = velocity * Math.sin(angle) * (deltaY/Math.abs(deltaY)) // Vertical component of v is sin of angle times net velocity as well as the direction
-
-    if (Number.isFinite(vx)) this.x += vx //Arctan function causes some NaN numbers for fireflies, ignore these
-    if (Number.isFinite(vy)) this.y += vy
   }
   stayWithinView() {
     // particle.position.x = Math.max( Math.min( particle.position.x, SCREEN_WIDTH ), 0 )
@@ -160,6 +142,7 @@ export class Firefly {
   }
   collide() {
     if (this.collision) {
+      this.calcField()
       const thisIndex = fireflies.indexOf(this)
       for (let i = 0; i < fireflies.length; i++) {
         if (fireflies[i] != fireflies[thisIndex]) {
@@ -182,6 +165,28 @@ export class Firefly {
         }
       }
     }
+  }
+  calcField() {
+    if (!mouse.isMoving()) return
+
+    const k = 8 // Max velocity constant
+
+    let deltaX = this.x - mouse.x // Horizontal distance between firefly and mouse
+    let deltaY = this.y - mouse.y // Vertical distance between firefly and mouse
+
+    let distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2)) // Distance between firefly and mouse
+    let angle = Math.atan(Math.abs(deltaY) / Math.abs(deltaX)) // Angle of firefly with respect to mouse
+
+    if (distance > 7 * maxRadius) return
+
+    let velocity = k / Math.pow(distance/(maxRadius), 1.5) // Velocity is modelled after electric field (inaccurate more conversions needed for true velocity)
+    if (distance < this.radius) velocity = k // Sets limit on field strength, this is in case mouse is within the radius
+
+    let vx = velocity * Math.cos(angle) * (deltaX/Math.abs(deltaX)) // Horizontal component of v is cos of angle times net velocity as well as the direction
+    let vy = velocity * Math.sin(angle) * (deltaY/Math.abs(deltaY)) // Vertical component of v is sin of angle times net velocity as well as the direction
+
+    if (Number.isFinite(vx)) this.x += vx //Arctan function causes some NaN numbers for fireflies, ignore these
+    if (Number.isFinite(vy)) this.y += vy
   }
   calcGlow() {
     if (this.glow.default === undefined) {
@@ -208,15 +213,5 @@ export class Firefly {
         this.glow.strength = this.glow.default
       }
     }
-  }
-}
-
-class Trail extends Firefly {
-  constructor() {
-    this.body = []
-    this.length = super.radius
-  }
-  draw() {
-
   }
 }
