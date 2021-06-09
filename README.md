@@ -42,12 +42,21 @@ Please note that the order of parameters is fixed.
 * @param {boolean} flicker             - should the fireflies flicker periodically?
 * @param {boolean} connect             - should fireflies weave a web of threads in-between them?
 */
-  static initialize(quantity = Math.floor((window.innerHeight + window.innerWidth) / 100), radius = [5, 25 + Math.floor((window.innerHeight + window.innerWidth) / 100)], color = [{ fill: '#ffffea', glow: '#ff881b' }], collision = false, pulse = true, flicker = true, connect = false) {
+  static initialize(quantity = Math.floor((window.innerHeight + window.innerWidth) / 100), radius = [5, 25 + Math.floor((window.innerHeight + window.innerWidth) / 100)], color = [{ fill: '#ffffea', glow: '#ff881b' }], collision = true, pulse = true, flicker = true, connect = false) {
   ...
 }
 ```
 The `undefined` value or omitting parameters will revert to default settings / parameters.
 
+# Tips
+
+Due to the default color scheme, fireflies look their best over dark background. I suggest using the following css declaration, at least for testing purposes:
+```css
+body {
+  background-color: black;
+  /* overflow: none; */
+}
+```
 
 # Contributing
 
