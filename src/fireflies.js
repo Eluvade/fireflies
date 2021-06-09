@@ -45,7 +45,7 @@ const mouseEH = _ => {
 }
 
 export default class Fireflies {
-  static initialize(quantity = Math.floor((window.innerHeight + window.innerWidth) / 100), radius = [5, 25 + Math.floor((window.innerHeight + window.innerWidth) / 100)], color = [{ fill: '#ffffea', glow: '#ff881b' }], collision = false, pulse = true, flicker = true, connect = false) {
+  static initialize(quantity = Math.floor((window.innerHeight + window.innerWidth) / 100), radius = [5, 25 + Math.floor((window.innerHeight + window.innerWidth) / 100)], color = [{ fill: '#ffffea', glow: '#ff881b' }], collision = true, pulse = true, flicker = true, connect = false) {
     this.terminate() // Terminates all previously initialized instances
     canvas = document.createElement('canvas')
     document.body.appendChild(canvas)
